@@ -1,0 +1,368 @@
+/* Ensure the HTML and body cover the full height and no overflow */
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* Full-screen header */
+.main-header {
+    width: 100%;
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 960px;
+    margin: 0 auto; 
+    padding: 20px;
+}
+
+section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 0 auto; 
+    border-radius: 8px;
+    box-sizing: border-box; 
+}
+
+/* Background styling for the body */
+body {
+    background: url('background-image.jpg') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+}
+
+.main-header h1 {
+    font-size: 48px;
+    color: white;
+}
+
+.main-header p {
+    font-size: 20px;
+    color: white;
+    line-height: 1.6;
+}
+
+/* Styles for Education and Work */
+section h1 {
+    color: white;
+    font-size: 48px;
+}
+
+section h2 {
+    color: white;
+    font-size: 24px;
+}
+
+section h3 {
+    font-size: 20px;
+    color: white;
+}
+
+section p, section li {
+    font-size: 16px;
+    color: white;
+    line-height: 1.5;
+}
+
+ul {
+    list-style-type: none; 
+    padding: 0;
+}
+
+#education .container {
+    display: block; /* Changed from flex to block for vertical stacking */
+    max-height: none; /* Remove max height restriction */
+    overflow: visible; /* Allow natural flow of content */
+}
+
+.education-details {
+    width: 100%;
+    padding: 20px;
+    overflow-y: auto; /* Keep if you expect a lot of text */
+    text-align: center;
+}
+
+.project-images {
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates three columns */
+    grid-template-rows: auto auto; /* Creates two rows, height based on content */
+    gap: 20px; /* Space between grid items */
+    overflow-y: auto; /* Allows scrolling within the grid if needed */
+}
+
+.project-images img,
+.project-images p {
+    width: 95%; /* Ensures images and text fit their containers */
+    margin-bottom: 0; /* Adjust or remove as per design needs */
+}
+
+.project-link {
+    display: flex; /* Enables Flexbox */
+    flex-direction: column; /* Stacks children vertically */
+    align-items: center; /* Centers children horizontally */
+    justify-content: center; /* Centers children vertically */
+    text-align: center; /* Ensures text is centered */
+    width: 100%; /* Takes full width of its container */
+    padding: 10px; /* Optional: Adds some padding inside the link */
+    box-sizing: border-box; /* Includes padding in the width and height calculations */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.project-link img {
+    max-width: 90%; 
+    height: auto; 
+    transition: transform 0.3s ease; 
+}
+
+.project-link p {
+    width: 90%; 
+    margin-top: 20px; 
+    transition: transform 0.3s ease; 
+}
+
+.project-link:hover {
+    background-color: rgba(200, 200, 200, 0.3); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /
+    transform: scale(1.05); 
+}
+
+.project-link:hover img {
+    transform: scale(1.1); 
+}
+
+.project-link:hover p {
+    transform: scale(1.05); 
+}
+
+
+@media (max-width: 768px) {
+    .project-images {
+        grid-template-columns: 1fr; /* Stack images in one column on smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr; 
+    }
+}
+
+/* Work Styles */
+#work .work-grid {
+    display: grid;
+    grid-template-rows: auto auto; /* Two rows: one for main, one for side-by-side columns */
+    grid-template-columns: 1fr 1fr; /* Two columns for the second row */
+    gap: 20px; /* Space between grids */
+    margin-top: 20px; /* Space below the header */
+}
+
+.work-main {
+    grid-column: 1 / -1; /* Spans all columns in the first row */
+    padding: 20px;
+    border: 1px solid #ccc;
+    color: white;
+}
+
+.work-side {
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+.work-main h3, .work-side h3 {
+    color: white;
+    margin-top: 0;
+}
+
+.work-main ul, .work-side ul {
+    padding-left: 20px;
+}
+
+@media (max-width: 768px) {
+    #work .work-grid {
+        grid-template-columns: 1fr; /* One column on smaller screens */
+    }
+
+    .work-side {
+        grid-column: 1; /* Ensure side jobs stack under the main job */
+    }
+}
+
+/* Styles for Home Page Icons */
+.social-icons {
+    text-align: center; 
+    margin-top: 20px; 
+    padding: 10px 0; 
+}
+
+.social-icons a {
+    margin: 0 10px; 
+    color: #000;  
+    font-size: 24px; 
+    text-decoration: none; 
+    background-color: #e7e7e7;  
+    padding: 10px;  
+    border-radius: 15%;  
+    display: inline-block; 
+    transition: background-color 0.3s, color 0.3s;  
+}
+
+.social-icons a:hover {
+    color: #555; 
+    background-color: #d6d6d6; 
+    transform: scale(1.1);  
+}
+
+.resume-download {
+    text-align: center;
+    margin-top: 20px; 
+}
+
+.resume-download button {
+    padding: 10px 20px; 
+    background-color: #4CAF50;  /* Green background */
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s, transform 0.3s;  /* Ensures smooth color change and scaling */
+}
+
+.resume-download button:hover {
+    background-color: #45a049;  /* Darker green on hover */
+    transform: scale(1.1);  /* Slightly enlarges the button on hover */
+}
+
+
+
+
+/* Styling for the Navigation */
+nav {
+    text-align: left; 
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 10px 20px; 
+    background-color: transparent; 
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    margin-right: 20px; 
+    background-color: transparent; 
+    border: 2px solid white; 
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+
+nav ul li a {
+    color: white; 
+    text-decoration: none;
+    font-size: 16px; 
+    transition: color 0.3s, background-color 0.3s; 
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+    color: #ffa500; 
+}
+
+/* Background styling */
+body {
+    background: url('/images/background-image.jpg') no-repeat center center fixed;
+    background-size: cover;
+    background-repeat: repeat-x;
+    background-attachment: fixed;
+    background-width: 100%;
+    position: absolute;
+}
+
+/* Media Queries for Tablets */
+@media (max-width: 768px) {
+    .main-header h1 {
+        font-size: 32px; 
+    }
+    .main-header p {
+        font-size: 16px; 
+    }
+    .main-header {
+        max-width: 748px;
+    }
+
+    #education {
+        margin-top: 90px;
+    }
+}
+
+/* Media Queries for Smartphones */
+@media (max-width: 425px) {
+    .main-header {
+        max-width: 405px;
+    }
+    .main-header h1 {
+        font-size: 24px; 
+        color: white;
+    }
+    .main-header p {
+        font-size: 14px;
+        color: white;
+    }
+    body, html {
+        height: auto; 
+        min-height: 100%;
+        display: block; 
+    }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+        color: black;
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        color: white;
+        opacity: 1;
+    }
+}
+
+/* Apply this animation to specific elements or classes */
+.element-slide-in {
+    animation: slideInFromLeft 1s ease-out forwards;
+}
+
+
