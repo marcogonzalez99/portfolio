@@ -333,7 +333,7 @@ nav ul li a:focus {
 
 /* Background styling */
 body {
-    background: url('https://marcogonzalez99.github.io/portfolio/images/background-image.jpg') no-repeat center center fixed;
+    background: url('portfolio/images/background-image.jpg') no-repeat center center fixed;
     background-size: cover;
     background-repeat: repeat-x;
     background-attachment: fixed;
