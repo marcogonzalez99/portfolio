@@ -6,7 +6,9 @@ html, body {
     padding: 0;
     overflow-x: hidden; 
     font-family: Arial, sans-serif;
+    scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
+    overflow-y: scroll;
 }
 
 /* Full-screen header */
@@ -21,13 +23,45 @@ html, body {
     max-width: 960px;
     margin: 0 auto; 
     padding: 20px;
+    }
+    
+@media (max-width: 768px) {
+    .main-header {
+        height: 100vh; 
+    }
+    
+    #education {
+        height: 225vh; 
+    }
+}
+
+@media (max-width: 425px) {
+    .main-header p {
+        width: 95%;
+    }
+    .education-details {
+        width: 90% !important;
+    }
+    .project-images {
+        width: 90% !important;
+    }
+    #work-title {
+        font-size: 46px;
+        text-align: center;
+    }
+    .carousel-control {
+        top: 93% !important;
+    }
+    .project-link {
+        display: block !important;
+        text-align: left !important;
+        width: 120% !important
+    }
 }
 
 section {
     width: 100%;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px;
@@ -82,15 +116,15 @@ ul {
 }
 
 #education .container {
-    display: block; /* Changed from flex to block for vertical stacking */
-    max-height: none; /* Remove max height restriction */
-    overflow: visible; /* Allow natural flow of content */
+    display: block;
+    max-height: none;
+    overflow: visible;
 }
 
 .education-details {
     width: 100%;
     padding: 20px;
-    overflow-y: auto; /* Keep if you expect a lot of text */
+    overflow-y: auto;
     text-align: center;
 }
 
@@ -98,28 +132,28 @@ ul {
     width: 100%;
     padding: 20px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Creates three columns */
-    grid-template-rows: auto auto; /* Creates two rows, height based on content */
-    gap: 20px; /* Space between grid items */
-    overflow-y: auto; /* Allows scrolling within the grid if needed */
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 20px;
+    overflow-y: auto;
 }
 
 .project-images img,
 .project-images p {
-    width: 95%; /* Ensures images and text fit their containers */
-    margin-bottom: 0; /* Adjust or remove as per design needs */
+    width: 95%;
+    margin-bottom: 0;
 }
 
 .project-link {
-    display: flex; /* Enables Flexbox */
-    flex-direction: column; /* Stacks children vertically */
-    align-items: center; /* Centers children horizontally */
-    justify-content: center; /* Centers children vertically */
-    text-align: center; /* Ensures text is centered */
-    width: 100%; /* Takes full width of its container */
-    padding: 10px; /* Optional: Adds some padding inside the link */
-    box-sizing: border-box; /* Includes padding in the width and height calculations */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .project-link img {
@@ -153,52 +187,60 @@ ul {
     .project-images {
         grid-template-columns: 1fr; /* Stack images in one column on smaller screens */
     }
-}
-
-@media (max-width: 768px) {
     .container {
         grid-template-columns: 1fr; 
     }
 }
 
-/* Work Styles */
-#work .work-grid {
-    display: grid;
-    grid-template-rows: auto auto; /* Two rows: one for main, one for side-by-side columns */
-    grid-template-columns: 1fr 1fr; /* Two columns for the second row */
-    gap: 20px; /* Space between grids */
-    margin-top: 20px; /* Space below the header */
+/* Carousel Styles */
+.carousel {
+    position: relative;
+    max-width: 900px;
+    margin: auto;
+    overflow: hidden;
 }
 
-.work-main {
-    grid-column: 1 / -1; /* Spans all columns in the first row */
+.carousel-inner {
+    display: flex;
+    height: 500px;
+    align-items: center;
+    transition: transform 0.5s ease-in-out;
+    text-align: center;
+    background-color: rgba(200, 200, 200, 0.3); 
+}
+
+.carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
     padding: 20px;
-    border: 1px solid #ccc;
+    display: none;
+}
+
+.carousel-item.active {
+    display: block; 
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-25%);
     color: white;
+    padding: 10px;
+    cursor: pointer;
+    font-size: xx-large;
 }
 
-.work-side {
-    padding: 20px;
-    border: 1px solid #ccc;
+
+.carousel-control.prev {
+    left: 0;
 }
 
-.work-main h3, .work-side h3 {
-    color: white;
-    margin-top: 0;
+.carousel-control.next {
+    right: 0;
 }
 
-.work-main ul, .work-side ul {
-    padding-left: 20px;
-}
-
-@media (max-width: 768px) {
-    #work .work-grid {
-        grid-template-columns: 1fr; /* One column on smaller screens */
-    }
-
-    .work-side {
-        grid-column: 1; /* Ensure side jobs stack under the main job */
-    }
+#work-title {
+    text-align: center;
 }
 
 /* Styles for Home Page Icons */
@@ -238,12 +280,12 @@ ul {
     border: none; 
     border-radius: 5px; 
     cursor: pointer; 
-    transition: background-color 0.3s, transform 0.3s;  /* Ensures smooth color change and scaling */
+    transition: background-color 0.3s, transform 0.3s;  
 }
 
 .resume-download button:hover {
-    background-color: #45a049;  /* Darker green on hover */
-    transform: scale(1.1);  /* Slightly enlarges the button on hover */
+    background-color: #45a049;  
+    transform: scale(1.1);  
 }
 
 
@@ -360,7 +402,6 @@ body {
     }
 }
 
-/* Apply this animation to specific elements or classes */
 .element-slide-in {
     animation: slideInFromLeft 1s ease-out forwards;
 }
